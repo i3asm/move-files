@@ -33,7 +33,7 @@ def move_files(source_dir, dest_dir):
                         break
                     counter += 1
 
-            shutil.move(file_path, dest_path)
+            shutil.copy(file_path, dest_path)
             print(f"Moved '{file_path}' to '{dest_path}'")
 
 
