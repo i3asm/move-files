@@ -21,6 +21,18 @@ def move_files(source_dir, dest_dir):
                 continue
             file_path = os.path.join(root, file)
             dest_path = os.path.join(dest_dir, file)
+
+            if os.path.exists(dest_path):
+                base_name, extension = os.path.splitext(file)
+                counter = 1
+                while True:
+                    new_name = f"{base_name}_{counter}{extension}"
+                    new_path = os.path.join(dest_dir, new_name)
+                    if not os.path.exists(new_path):
+                        dest_path = new_path
+                        break
+                    counter += 1
+
             shutil.move(file_path, dest_path)
             print(f"Moved '{file_path}' to '{dest_path}'")
 
